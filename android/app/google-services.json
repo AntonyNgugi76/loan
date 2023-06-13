@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "865239668665",
+    "project_id": "shebanks-d375c",
+    "storage_bucket": "shebanks-d375c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865239668665:android:60717000cc72b682480868",
+        "android_client_info": {
+          "package_name": "org.dotconnectafrica.shebnks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865239668665-6eclgt1435ra2qbbok1gfdt20v84kh1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAME47KafkhVo9SsT27lghyq6yG1u1P_9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865239668665-6eclgt1435ra2qbbok1gfdt20v84kh1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
