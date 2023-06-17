@@ -259,9 +259,13 @@ class _HealtResourceState extends State<ScreenNews> {
 
     try {
       final response = await http.Client()
+          // .get(Uri.parse("https://shebnks.mobi/blogs/"));
           .get(Uri.parse("https://missdotafrica.digital/category/top-news/"));
 
+      debugPrint('Response......${response.body}');
+
       if (response.statusCode == 200) {
+
         var document = parse(response.body);
         var newsUnfiltered = document.getElementsByClassName('blog-post');
 

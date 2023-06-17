@@ -9,22 +9,20 @@ import '../api_services/api_services.dart';
 import '../utils/universal_methods.dart';
 import 'colors.dart';
 
-class ChangePassword extends StatefulWidget {
+class PasswordForgot extends StatefulWidget {
 
-  final fName;
-  final lName;
-  final email;
-  final userId;
+  final phone;
 
-  const ChangePassword(
-      {required this.fName, required this.email, required this.lName, required this.userId, Key? key})
+
+  const PasswordForgot(
+      { Key? key, required this.phone})
       : super(key: key);
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<PasswordForgot> createState() => _PasswordForgotState();
 }
 
-class _ChangePasswordState extends State<ChangePassword> {
+class _PasswordForgotState extends State<PasswordForgot> {
   var token;
   final ApiServices _apiServices = ApiServices();
 
@@ -68,7 +66,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                 ),
               ),
-              largeTitle: const Text('Change Password'),
+              largeTitle: const Text('Forgot Password'),
             ),
           ];
         },
@@ -94,51 +92,51 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          // margin: EdgeInsets.only(left: 16),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 8,
-              ),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/images/default_avatar.png',
-                        height: 50,
-                        width: 50,
-                        color: MyColors().primaryColor,
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${widget.fName} ${widget.lName}',
-                            style: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w400),
-                          ),
-                          Text(
-                            '${widget.email}',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Container(
+        //   // margin: EdgeInsets.only(left: 16),
+        //   child: Column(
+        //     children: [
+        //       const SizedBox(
+        //         height: 8,
+        //       ),
+        //       InkWell(
+        //         onTap: () {},
+        //         child: Container(
+        //           child: Row(
+        //             children: [
+        //               Image.asset(
+        //                 'assets/images/default_avatar.png',
+        //                 height: 50,
+        //                 width: 50,
+        //                 color: MyColors().primaryColor,
+        //               ),
+        //               const SizedBox(
+        //                 width: 8,
+        //               ),
+        //               Column(
+        //                 crossAxisAlignment: CrossAxisAlignment.start,
+        //                 children: [
+        //                   Text(
+        //                     '${widget.fName} ${widget.lName}',
+        //                     style: const TextStyle(
+        //                         fontSize: 15, fontWeight: FontWeight.w400),
+        //                   ),
+        //                   Text(
+        //                     '${widget.email}',
+        //                     style: TextStyle(
+        //                       fontSize: 13,
+        //                       color: Colors.grey[600],
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ],
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }
@@ -146,51 +144,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget _phone_input() {
     return Column(
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Flexible(
-              child: TextFormField(
-                obscureText: true,
-                controller: oldPassword,
-                decoration: InputDecoration(
-                  hintText: 'Old Password',
-                  contentPadding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
 
-                  hintStyle: const TextStyle(fontSize: 13, color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
-                  ),
-                  //fillColor: Colors.green
-                ),
-                validator: (val) {
-                  if (val!.length == 0) {
-                    return "Old Password cannot be empty";
-                  } else {
-                    return null;
-                  }
-                },
-                keyboardType: TextInputType.text,
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 32,
-        ),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -199,7 +153,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 obscureText: true,
                 controller: newPassword,
                 decoration: InputDecoration(
-                  hintText: 'New Password',
+                  hintText: 'Password',
                   contentPadding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
                   hintStyle: const TextStyle(fontSize: 13, color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
@@ -315,11 +269,11 @@ class _ChangePasswordState extends State<ChangePassword> {
     var cnfNew = cnfNewPassword.text;
 
 
-    if (old.isEmpty) {
-      FocusScope.of(context).unfocus();
-      UniversalMethods.show_toast('Old Password is required', context);
-      return false;
-    }
+    // if (old.isEmpty) {
+    //   FocusScope.of(context).unfocus();
+    //   UniversalMethods.show_toast('Old Password is required', context);
+    //   return false;
+    // }
 
     if (newPass.isEmpty) {
       FocusScope.of(context).unfocus();
@@ -350,8 +304,8 @@ class _ChangePasswordState extends State<ChangePassword> {
     // await addUser(first_name, second_name, last_name, email);
 
 
-    Map data = { "oldPass": "$old", "newPass": "$newPass"};
-    _apiServices.changePin(widget.userId, token, data).then((value) {
+    Map data = { "password": "$newPass"};
+    _apiServices.forgotPassword(widget.phone, data).then((value) {
       if(value.status == "OK"){
         _successDialog(value.message.toString());
 

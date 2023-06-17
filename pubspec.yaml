@@ -45,6 +45,7 @@ dependencies:
   flutter_phoenix: ^1.0.0
   html: ^0.15.1
   algolia: ^1.1.2
+  webview_flutter: ^3.0.0
   google_fonts: ^4.0.3
   flutter_inappwebview: ^5.7.2+3
   expandable: ^5.0.1

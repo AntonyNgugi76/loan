@@ -83,7 +83,7 @@ class _LoginPassState extends State<LoginPass> {
     });
   }
 
-  storeLoanDetails(double initAmount, double remainingAmount, String status,
+  storeLoanDetails(double initAmount, double remainingAmount, String status, double amountToPay,
       String loanId) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -91,6 +91,7 @@ class _LoginPassState extends State<LoginPass> {
       _prefs.setDouble('remainingAmount', remainingAmount);
       _prefs.setString('status', status);
       _prefs.setString('loanId', loanId);
+      _prefs.setDouble('amountToPay', amountToPay);
     });
   }
 
@@ -283,10 +284,11 @@ class _LoginPassState extends State<LoginPass> {
             print('HasLoan');
             var initAmount = value.data.loan.initialAmount;
             var remainingAmount = value.data.loan.amountRemaining;
+            var amountToPay = value.data.loan.amountToPay;
             var status = value.data.loan.status;
             var loanId = value.data.loan.id;
             // Loan loan = value.data.loan;
-            storeLoanDetails(initAmount, remainingAmount, status, loanId);
+            storeLoanDetails(initAmount, remainingAmount, status, loanId, amountToPay);
           });
         } else {
           setState(() {

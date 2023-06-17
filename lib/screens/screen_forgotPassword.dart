@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:she_banks/api_services/api_services.dart';
 import 'package:she_banks/screens/loginPass.dart';
+import 'package:she_banks/screens/passwordForgot.dart';
 import 'package:she_banks/screens/screen_registration.dart';
 
 import '../utils/universal_methods.dart';
@@ -283,13 +284,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       if (value.status == 'OK') {
         setState(() {
           _isLoading= false;
+          Get.to(()=>PasswordForgot(phone: widget.phone));
         });
-        debugPrint('User Exist? ....${value.data.user}');
-        if (value.data.user == true) {
-          Get.off(() => const LoginPass());
-        } else {
-          Get.off(() => ScreenRegistration());
-        }
+
       } else if (value.status == 'BAD_REQUEST') {
         _showDialog(value.message.toString());
       } else {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:she_banks/screens/colors.dart';
 
 
 class UniversalMethods {
@@ -104,7 +105,7 @@ class UniversalMethods {
   static void show_toast(String message,context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.pink,
+        backgroundColor: MyColors().primaryColor,
         duration: const Duration(milliseconds: 4000), // default 4s
         content:  Text('${message}'),
       ),
@@ -322,4 +323,38 @@ class UniversalMethods {
 
     return height;
   }
+ // _successDialog(String message) {
+ //    showDialog(
+ //        context: BuildContext,
+ //        builder: (BuildContext context) {
+ //          return AlertDialog(
+ //            content: Container(
+ //                height: MediaQuery.of(context).size.height * 0.27,
+ //                child: Column(children: [
+ //                  const SizedBox(
+ //                    height: 24,
+ //                  ),
+ //                  const Icon(
+ //                    Icons.check_circle,
+ //                    size: 50,
+ //                    color: Colors.green,
+ //                  ),
+ //                  const SizedBox(
+ //                    height: 24,
+ //                  ),
+ //                  Text(message),
+ //                  const SizedBox(
+ //                    height: 24,
+ //                  ),
+ //                  OutlinedButton(
+ //                      onPressed: () {
+ //                        Navigator.of(context).pop();
+ //                        // push(MaterialPageRoute(
+ //                        // builder: (context) => Homescreen()));
+ //                      },
+ //                      child: const Text('Ok'))
+ //                ])),
+ //          );
+ //        });
+ //  }
 }

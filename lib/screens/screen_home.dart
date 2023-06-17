@@ -11,6 +11,7 @@ import 'package:she_banks/models/banner.dart';
 import 'package:she_banks/models/model_user.dart';
 import 'package:she_banks/screens/BannerWidget.dart';
 import 'package:she_banks/screens/DrawerItems.dart';
+import 'package:she_banks/screens/home_notifier.dart';
 import 'package:she_banks/screens/screen_help_center.dart';
 import 'package:she_banks/screens/screen_loan.dart';
 import 'package:she_banks/screens/screen_my_account.dart';
@@ -57,9 +58,11 @@ class _HomescreenState extends State<Homescreen> {
   String? _timeOfDay;
   var _userId;
   String? loanId;
-  double? initAmount;
+  var initAmount;
+  double? amountToPay;
   double? remainingAmount;
   String? status;
+  var interest;
   String _itext = '';
 
   // String? _lName;
@@ -73,6 +76,9 @@ class _HomescreenState extends State<Homescreen> {
       initAmount = _prefs.getDouble('initAmount');
       remainingAmount = _prefs.getDouble('remainingAmount');
       status = _prefs.getString('status');
+      amountToPay = _prefs.getDouble('amountToPay');
+      interest = (amountToPay!) - (initAmount);
+
     });
   }
 
@@ -155,7 +161,9 @@ class _HomescreenState extends State<Homescreen> {
           Container(
             margin: const EdgeInsets.only(right: 8),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.to(()=>NotificationPage());
+              },
               child: const Icon(
                 Icons.notifications,
                 color: Colors.black,
@@ -220,7 +228,8 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         Expanded(
                           child: item_card(
-                            Color(0xffed39ca),
+                            // Color(0xffed39ca),
+                            Colors.indigo.shade300,
                             Colors.white,
                             Colors.white,
                             Icons.lightbulb_outline,
@@ -307,6 +316,21 @@ class _HomescreenState extends State<Homescreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Initial Loan : ',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(color: Colors.white),
+                      )),
+                  Text('$initAmount ',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(color: Colors.white),
+                      )),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Interest : ',
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(color: Colors.white),
                       )),

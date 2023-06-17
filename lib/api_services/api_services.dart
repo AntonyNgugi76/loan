@@ -56,6 +56,43 @@ class ApiServices {
     }
   }
 
+  Future forgotPassword(String mobile, Map _data) async {
+    String url = base_url + '/user/auth/password/forgot/${mobile}';
+
+    Map<String, String> header = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    final response = await http.post(Uri.parse(url), headers: header,body: jsonEncode(_data));
+    debugPrint('forgot${response.body}');
+
+    if (response.statusCode == 200) {
+      return SuccessModel.fromJson(jsonDecode(response.body));
+    } else {
+      return ErrorP.fromJson(jsonDecode(response.body));
+    }
+  }
+  Future changePin(String _userdId, String _token, Map _data) async {
+    String url = base_url + '/user/auth/password/change/${_userdId}';
+
+    Map<String, String> header = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${_token}',
+    };
+    debugPrint('cPin request>>>>>${_data}');
+
+    final response = await http.post(Uri.parse(url), headers: header, body: jsonEncode(_data));
+    debugPrint('cPin${response.body}');
+
+    if (response.statusCode == 200) {
+      return SuccessModel.fromJson(jsonDecode(response.body));
+    } else {
+      return ErrorP.fromJson(jsonDecode(response.body));
+    }
+  }
+
   Future verifyOtp(String mobile, Map otp) async {
     String url = base_url + '/user/auth/otp/${mobile}';
 
@@ -79,6 +116,7 @@ class ApiServices {
     const Map<String, String> header = {
       'Content-type': 'application/json',
       'Accept': 'application/json',
+
     };
     String url = base_url + '/user/auth/register';
     debugPrint('requestBody...................$data');

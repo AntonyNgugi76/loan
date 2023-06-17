@@ -49,15 +49,17 @@ class Data {
 }
 
 class Loan {
+  int? amountToPay;
   String? appliedOn;
-  var initialAmount;
-  var amountRemaining;
+  int? initialAmount;
+  int? amountRemaining;
   String? id;
   Null? disbursedOn;
   String? status;
 
   Loan(
-      {this.appliedOn,
+      {this.amountToPay,
+        this.appliedOn,
         this.initialAmount,
         this.amountRemaining,
         this.id,
@@ -65,6 +67,7 @@ class Loan {
         this.status});
 
   Loan.fromJson(Map<String, dynamic> json) {
+    amountToPay = json['amountToPay'];
     appliedOn = json['appliedOn'];
     initialAmount = json['initialAmount'];
     amountRemaining = json['amountRemaining'];
@@ -75,6 +78,7 @@ class Loan {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['amountToPay'] = this.amountToPay;
     data['appliedOn'] = this.appliedOn;
     data['initialAmount'] = this.initialAmount;
     data['amountRemaining'] = this.amountRemaining;
